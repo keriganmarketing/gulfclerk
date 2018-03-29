@@ -139,7 +139,7 @@ GOTMLS_define("GOTMLS_update_home", "//updates.gotmls.net/".GOTMLS_installation_
 
 if (!function_exists("GOTMLS_Invalid_Nonce")) {
 function GOTMLS_Invalid_Nonce($pre = "//Error: ") {
-	return $pre.__("Invalid or expired Nonce Token!",'gotmls').(isset($_REQUEST["GOTMLS_mt"])?(" ".$_REQUEST["GOTMLS_mt"].((strlen($_REQUEST["GOTMLS_mt"]) == 32)?(isset($GLOBALS["GOTMLS"]["tmp"]["nonce"][$_REQUEST["GOTMLS_mt"]])?$GLOBALS["GOTMLS"]["tmp"]["nonce"][$_REQUEST["GOTMLS_mt"]]:" !found"):" !len(".strlen($_REQUEST["GOTMLS_mt"]).")")):" GOTMLS_mt !set");
+	return $pre.__("Invalid or expired Nonce Token!",'gotmls').(isset($_REQUEST["GOTMLS_mt"])?(htmlspecialchars($_REQUEST["GOTMLS_mt"]).((strlen($_REQUEST["GOTMLS_mt"]) == 32)?(isset($GLOBALS["GOTMLS"]["tmp"]["nonce"][$_REQUEST["GOTMLS_mt"]])?$GLOBALS["GOTMLS"]["tmp"]["nonce"][$_REQUEST["GOTMLS_mt"]]:" !found"):" !len(".strlen($_REQUEST["GOTMLS_mt"]).")")):" GOTMLS_mt !set");
 }}
 
 if (!function_exists("GOTMLS_set_nonce")) {
@@ -316,7 +316,7 @@ function select_text_range(ta_id, start, end) {
 	} else
 		alert("The highlighting function does not work in your browser");
 }
-</script><table style="top: 0px; left: 0px; width: 100%; height: 100%; position: absolute;"><tr><td style="width: 100%"><form style="margin: 0;" method="post" action="?'.GOTMLS_set_nonce(__FUNCTION__."1522").'&page=GOTMLS-View-Quarantine&GOTMLS_mt='.$_REQUEST["GOTMLS_mt"].'" onsubmit="return confirm(\''.__("Are you sure you want to restore this file from the quarantine?",'gotmls').'\');"><input type="hidden" name="id[]" value="'.$Q_post["ID"].'"><input type="submit" value="RESTORE from Quarantine" style="display: none; background-color: #0C0; float: right;"></form><div id="fileperms" class="shadowed-box rounded-corners" style="display: none; position: absolute; left: 8px; top: 29px; background-color: #ccc; border: medium solid #C00; box-shadow: -3px 3px 3px #666; border-radius: 10px; padding: 10px;"><b>File Details</b><br />encoding: '.(function_exists("mb_detect_encoding")?mb_detect_encoding($GLOBALS["GOTMLS"]["tmp"]["file_contents"]):"Unknown").'<br />size: '.strlen($GLOBALS["GOTMLS"]["tmp"]["file_contents"]).' bytes<br />infected:'.$Q_post["post_modified_gmt"].'<br />quarantined:'.$Q_post["post_date_gmt"].'</div><div style="overflow: auto;"><span onmouseover="document.getElementById(\'fileperms\').style.display=\'block\';" onmouseout="document.getElementById(\'fileperms\').style.display=\'none\';">'.__("File Details:",'gotmls').'</span> ('.$fa.' )</div></td></tr><tr><td style="height: 100%"><textarea id="ta_file" style="width: 100%; height: 100%">'.htmlentities(str_replace("\r", "", $GLOBALS["GOTMLS"]["tmp"]["file_contents"])).'</textarea></td></tr></table>');
+</script><table style="top: 0px; left: 0px; width: 100%; height: 100%; position: absolute;"><tr><td style="width: 100%"><form style="margin: 0;" method="post" action="?'.GOTMLS_set_nonce(__FUNCTION__."1522").'&page=GOTMLS-View-Quarantine" onsubmit="return confirm(\''.__("Are you sure you want to restore this file from the quarantine?",'gotmls').'\');"><input type="hidden" name="id[]" value="'.$Q_post["ID"].'"><input type="submit" value="RESTORE from Quarantine" style="display: none; background-color: #0C0; float: right;"></form><div id="fileperms" class="shadowed-box rounded-corners" style="display: none; position: absolute; left: 8px; top: 29px; background-color: #ccc; border: medium solid #C00; box-shadow: -3px 3px 3px #666; border-radius: 10px; padding: 10px;"><b>File Details</b><br />encoding: '.(function_exists("mb_detect_encoding")?mb_detect_encoding($GLOBALS["GOTMLS"]["tmp"]["file_contents"]):"Unknown").'<br />size: '.strlen($GLOBALS["GOTMLS"]["tmp"]["file_contents"]).' bytes<br />infected:'.$Q_post["post_modified_gmt"].'<br />quarantined:'.$Q_post["post_date_gmt"].'</div><div style="overflow: auto;"><span onmouseover="document.getElementById(\'fileperms\').style.display=\'block\';" onmouseout="document.getElementById(\'fileperms\').style.display=\'none\';">'.__("File Details:",'gotmls').'</span> ('.$fa.' )</div></td></tr><tr><td style="height: 100%"><textarea id="ta_file" style="width: 100%; height: 100%">'.htmlentities(str_replace("\r", "", $GLOBALS["GOTMLS"]["tmp"]["file_contents"])).'</textarea></td></tr></table>');
 				} else
 					die('<h3>Item NOT Found in Quarantine</h3>');
 			} else {
@@ -487,7 +487,7 @@ function GOTMLS_loaded() {
 
 if (!function_exists("add_action")) {
 	GOTMLS_loaded();
-	GOTMLS_admin_notices();
+//	GOTMLS_admin_notices();
 }
 
 function GOTMLS_fileperms($file) {

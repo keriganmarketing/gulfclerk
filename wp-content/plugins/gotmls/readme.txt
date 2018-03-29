@@ -5,10 +5,10 @@ Author URI: http://wordpress.ieonly.com/category/my-plugins/anti-malware/
 Contributors: scheeeli, gotmls
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QZHD8QHZ2E7PE
 Tags: security, firewall, anti-malware, scanner, automatic, repair, remove, malware, virus, threat, hacked, malicious, infection, timthumb, exploit, block, brute-force, wp-login, patch, antimalware, revslider, Revolution Slider
-Version: 4.17.29
-Stable tag: 4.17.29
+Version: 4.17.44
+Stable tag: 4.17.44
 Requires at least: 3.3
-Tested up to: 4.8.1
+Tested up to: 4.8.3
 
 This Anti-Malware scanner searches for Malware, Viruses, and other security threats and vulnerabilities on your server and it helps you fix them.
 
@@ -27,7 +27,7 @@ This Anti-Malware scanner searches for Malware, Viruses, and other security thre
 * Check the integrity of your WordPress Core files.
 * Automatically download new Definition Updates when running a Complete Scan.
 
-Updated August 4th
+Updated November 4th
 
 Register this plugin at [GOTMLS.NET](http://gotmls.net/) and get access to new definitions of "Known Threats" and added features like Automatic Removal, plus patches for specific security vulnerabilities like old versions of timthumb. Updated definition files can be downloaded automatically within the admin once your Key is registered. Otherwise, this plugin just scans for "Potential Threats" and leaves it up to you to identify and remove the malicious ones.
 
@@ -93,6 +93,12 @@ sucuri.net caches their scan results and will not refresh the scan until you cli
 5. The Quarantine showing threats that have been fix already.
 
 == Changelog ==
+
+= 4.17.44 =
+* Added Title check to make sure it does say you were hacked.
+* Updated code for compatibility with WP 4.8.3 (latest release).
+* Fixed Undefined variable error in Quarantine.
+* Fixed XSS vulnerability in nonce error output.
 
 = 4.17.29 =
 * Changed the definition update URL to only use SSL when required.
@@ -313,20 +319,10 @@ sucuri.net caches their scan results and will not refresh the scan until you cli
 = 3.07.06 =
 * Added SSL support for definition updates and registration form.
 * Upgraded the Whitelist feature so the it could not contain duplicates.
-
-= 1.3.05.31 =
 * Downgraded the WP-Login threat and changed it to an opt-in fix.
-
-= 1.3.05.14 =
 * Fixed a bug in the Add to Whitelist feature so the you do not need to update the definitions after whitelisting a file.
-
-= 1.3.05.13 =
 * Added ability to whitelist files.
-
-= 1.3.04.19 =
 * Fixed a major bug in yesterdays release broke the login page on some sites.
-
-= 1.3.04.17 =
 * Added a patch for the wp-login.php brute force attack that has been going around.
 * Created a process to restore files from the Quarantine.
 * Fixed a few other small bugs including path issues on Winblows server.
@@ -368,6 +364,9 @@ sucuri.net caches their scan results and will not refresh the scan until you cli
 * First versions available for WordPress (code removed, no longer compatible).
 
 == Upgrade Notice ==
+
+= 4.17.44 =
+Added Title check to make sure it does say you were hacked, updated code for compatibility with WP 4.8.3 and fixed Undefined variable error in Quarantine and an XSS vulnerability in nonce error output.
 
 = 4.17.29 =
 Changed the definition update URL to only use SSL when required, and updated PayPal form for better domestic IPN compatibility.
@@ -523,25 +522,10 @@ Fixed a session bug that conflicted with jigoshop. (Thanks dragonflyfla)
 Fixed a few bug in the Whitelist definition feature.
 
 = 3.07.06 =
-Added SSL support for definition updates and upgraded the Whitelist feature.
-
-= 1.3.05.31 =
-Downgraded the WP-Login threat and changed it to an opt-in fix.
-
-= 1.3.05.14 =
-Fixed a bug in the Add to Whitelist feature so the you do not need to update the definitions after whitelisting a file.
-
-= 1.3.05.13 =
-Added ability to whitelist files.
-
-= 1.3.04.19 =
-Fixed a major bug in yesterdays release broke the login page on some sites.
-
-= 1.3.04.17 =
-Added a patch for the wp-login.php brute force attack and fixed a few other small bugs.
+Added SSL support for definition updates and upgraded the Whitelist feature (Plus many other improvement from v1.3: see Changelog for details).
 
 = 1.3.02.15 =
-Improved security on the Quarantine directory to fix the 500 error on some servers (Plus many other improvement from v1.2: see Changelog for details)
+Improved security on the Quarantine directory to fix the 500 error on some servers (Plus many other improvement from v1.2: see Changelog for details).
 
 = 1.2.03.23 =
 First versions available for WordPress (code removed, no longer compatible).
