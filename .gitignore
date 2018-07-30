@@ -3,3 +3,5 @@ tags
 wp-content/plugins/siteguard/really-simple-captcha/tmp/
 .htaccess
 .vscode
+.idea/
+wp-content/plugins/

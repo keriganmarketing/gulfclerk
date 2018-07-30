@@ -16,6 +16,7 @@ $becky = get_field( 'becky_headshot', 6 );
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="google-site-verification" content="rcvd-klp6FgwXBgGrhPYd0JDh15Gg4-bRik-a6jnRas" />
 	<title><?php wp_title( '|', true, 'right' ); ?></title>
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
