@@ -1,0 +1,66 @@
+php_flag apc.cache_by_default Off
+
+	<IfModule mod_rewrite.c>
+	RewriteEngine On
+	RewriteBase /
+
+	RewriteCond %{SERVER_PORT} 80 [OR]
+	RewriteCond %{HTTP_HOST} ^www.gulfclerk.com [NC]
+RewriteCond %{REQUEST_URI} !^/[0-9]+\..+\.cpaneldcv$
+RewriteCond %{REQUEST_URI} !^/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/[0-9a-zA-Z_-]+$
+	RewriteRule ^(.*)$ https://gulfclerk.com/$1 [R,L]
+
+
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !^/[0-9]+\..+\.cpaneldcv$
+RewriteCond %{REQUEST_URI} !^/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/[0-9a-zA-Z_-]+$
+	RewriteRule ^(.*)$ index.php/$1 [L]
+
+	##For faster loading web pages
+	Header set Connection keep-alive
+
+	</IfModule>
+
+
+
+php_value upload_max_filesize 64M
+php_value post_max_size 64M
+php_value max_execution_time 300
+php_value max_input_time 300
+
+<FilesMatch "\.(ico|pdf|flv|jpg|jpeg|png|gif|js|css|swf|woff|ttf|svg|otf)$">
+ Header set Cache-Control "max-age=604800, public"
+</FilesMatch>
+
+Redirect 301 /official-records.php https://gulfclerk.com/public-records/official-records/
+Redirect 301 /contact.php https://gulfclerk.com/contact/
+Redirect 301 /civil-court.php https://gulfclerk.com/courts/circuit-civil-court/
+Redirect 301 /foreclosures.php https://gulfclerk.com/courts/foreclosures/
+Redirect 301 /marriage-license.php https://gulfclerk.com/public-records/marriage/
+Redirect 301 /criminal-court.php https://gulfclerk.com/courts/criminal-court/
+Redirect 301 /foreclosure-sales.php https://gulfclerk.com/courts/foreclosures/
+Redirect 301 /tax-deeds.php https://gulfclerk.com/public-records/tax-deeds/
+
+#SITEGUARD_PLUGIN_SETTINGS_START
+#SITEGUARD_PLUGIN_SETTINGS_END
+
+# BEGIN WordPress
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+RewriteCond %{REQUEST_URI} !^/[0-9]+\..+\.cpaneldcv$
+RewriteCond %{REQUEST_URI} !^/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/[0-9a-zA-Z_-]+$
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !^/[0-9]+\..+\.cpaneldcv$
+RewriteCond %{REQUEST_URI} !^/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/[0-9a-zA-Z_-]+$
+RewriteRule . /index.php [L]
+</IfModule>
+
+# END WordPress
