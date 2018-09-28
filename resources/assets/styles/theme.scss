@@ -1,0 +1,553 @@
+// Full page Layout
+html {
+    height: 100%;
+
+    * {
+        text-rendering: unset;
+    }
+
+    .rounded {
+        border-radius: 2rem !important;
+    }
+    .round {
+        border-radius: 50%;
+    }
+
+    input:focus {
+        box-shadow: none !important;
+    }
+}
+
+body {
+    height: 100%;
+
+    #app {
+        height: auto !important;
+        min-height: 100%;
+        overflow-x: initial;
+
+        .site-wrapper {
+            display: flex;
+            flex-direction: column;
+            
+            main {
+                flex-grow: 1;
+            }
+            
+            &.full-height {
+                height: 100vh;
+            }
+
+            &.text-large {
+                .sizable, .button-gallery.sizeable {
+                    p, h3, h4, h5, h6, li, button, td, a.sizeable, .sizeable-element { font-size: 1.2rem !important; }
+                    h1 { font-size: 2.4rem !important; }
+                    h2 { font-size: 1.5rem !important; }
+                }
+            }
+
+            &.text-larger {
+                .sizable, .button-gallery.sizeable {
+                    p, h3, h4, h5, h6, li, button, td, a.sizeable, .sizeable-element { font-size: 1.5rem !important; }
+                    h1 { font-size: 2.6rem !important; }
+                    h2 { font-size: 1.75rem !important; }
+                }
+
+                .container {
+                    @media (min-width: 1200px){
+                        max-width: 1200px;
+                    }
+                    @media (min-width: 1400px){
+                        max-width: 1400px;
+                    }
+                    @media (min-width: 1900px){
+                        max-width: 1900px;
+                    }
+                }
+            }
+
+            &.text-largest {
+                .sizable, .button-gallery.sizeable {
+                    p, h3, h4, h5, h6, li, button, td, a.sizeable, .sizeable-element { font-size: 2rem !important; }
+                    h1 { font-size: 2.8rem !important; }
+                    h2 { font-size: 2.5rem !important; }
+                }
+
+                .container {
+                    @media (min-width: 1200px){
+                        max-width: 100%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.top {
+    transition: all .5s linear;
+    position: relative;
+    z-index: 6;
+    position: fixed;
+    width: 100%;
+
+    .site-branding {
+        align-items: center;
+        padding: 9px 0;
+
+        @media (min-width: 768px){
+            padding: 16px 0;
+        }
+
+        * {
+            transition: all linear .5s;
+        }
+
+        .logo {
+            height: 65px;
+
+            @media (min-width: 768px){
+                height: 126px;
+            }
+        }
+    
+        .logo-text {
+            padding: 0 0 0 10px;
+
+            @media (min-width: 768px){
+                padding: 0 0 0 20px;
+            }
+    
+            p {
+                margin: 0 0 .1rem;
+                font-size: 13px;
+                line-height: 1em;
+                font-weight: 700;
+                text-transform: uppercase;
+
+                @media (min-width: 768px){
+                    font-size: 23px;
+                    line-height: 24px;
+                    margin: 0;
+                }
+    
+                &.clerk-name {
+                    font-weight: 400;
+                    font-size: 14px;
+
+                    @media (min-width: 768px){
+                        font-size: 29px;
+                        margin: 0 0 10px;
+                    }
+                }
+            }
+        }
+    }
+
+    .search-form {
+        input {
+            border-color: transparent !important;
+            border: none !important;
+            background-color: transparent !important;
+            border-radius: 2rem 0 0 2rem !important;
+        }
+    }
+
+    .text-sizer {
+        button {
+            padding: 0;
+            height: 30px;
+            width: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            &.reset-button {
+                font-family: 'Montserrat';
+                font-weight: 400;
+                font-size: 10px;
+            }
+        }
+    }
+
+    .topnav {
+        height: 100%;
+        padding: 0;
+        box-shadow: 0 0 5px rgba(0,0,0,.2);
+
+        .todays-date {
+            width: 100%;
+            padding: .3rem 0;
+            border-bottom: 1px solid #FFF;
+
+            @media (min-width: 768px){
+                width: auto;
+                border-bottom: 0;
+            }
+        }
+
+        .container {
+
+            .btn {
+                border: none;
+                font-size: 14px;
+                font-weight: 400;
+                flex-grow: 1;
+                border-right: 1px solid #FFF;
+                padding: .4rem .25rem .5rem;
+
+                &:last-child {
+                    border-right: none;
+                }
+            }
+
+        }
+
+        
+
+        a.nav-link {
+            color: #FFF;
+            padding: 1.1rem 1rem;
+            text-transform: uppercase;
+
+            &:hover {
+                background-color: rgba(255,255,255,.45);
+                text-shadow: 0 0 4px rgba(0,0,0,.1);
+            }
+
+            &.how-do-i {
+                font-weight: 600;
+            }
+        }
+        .dropdown-menu {
+            display: none;
+            flex-flow: column wrap;
+            border: 0;
+            margin-top: -1px;
+            border-radius: 0;
+            padding: 1.5rem 1.75rem;
+            background-color: rgba(255,255,255,.9);
+            width: 595px;
+            max-height: 400px;
+
+            li { 
+                width: 50%; 
+
+                a.dropdown-item {
+                    padding: .25rem 0;
+                    color: $cyan;
+                    font-weight: $font-weight-medium;
+                    background-color: transparent;
+                    display: block;
+                    font-size: .9em;
+                }
+
+                .submenu-link {
+                    margin: 0;
+                    padding-left: 1rem;
+
+                    a.dropdown-item {
+                        font-style: italic;
+                    }
+                }
+            }
+
+            
+        }
+    }
+
+    .mega-menu {
+        flex-flow: column wrap;
+        border: 0;
+        margin-top: -1px;
+        border-radius: 0;
+        padding: 1.5rem 1.75rem;
+        background-color: rgba(255,255,255,.9);
+        max-height: 330px;
+        list-style: none;
+
+        li { 
+            width: 250px;
+
+            a.dropdown-item {
+                padding: .25rem 0;
+                color: $cyan;
+                font-weight: $font-weight-medium;
+                background-color: transparent;
+                display: block;
+                font-size: .9em;
+            }
+
+            .submenu-link {
+                margin: 0;
+                padding-left: 1rem;
+
+                a.dropdown-item {
+                    font-style: italic;
+                }
+            }
+        } 
+    }
+}
+.top-pad {
+    height: 150px;
+
+    @media (min-width: 768px){
+        height: 214px;
+    }
+}
+
+.mobile-menu-open,
+.scrolling {
+    .top {
+        .top-container {
+            background-color: #FFF;
+        }
+        .site-branding {    
+            @media (min-width: 768px){
+                padding: 9px 0;
+            }
+    
+            .logo {   
+                @media (min-width: 768px){
+                    height: 65px;
+                }
+            }
+        
+            .logo-text {   
+                @media (min-width: 768px){
+                    padding: 0 0 0 10px;
+                }
+        
+                p {    
+                    @media (min-width: 768px){
+                        font-size: 13px;
+                        line-height: 1em;
+                        margin: 0 0 .1rem;
+                    }
+        
+                    &.clerk-name {
+                        @media (min-width: 768px){
+                            font-size: 14px;
+                            margin: 0;
+                        }
+                    }
+                }
+            }
+        }  
+
+        .search-box {
+            display: none;
+        }
+    }
+}
+
+// Body Content
+main {
+    position: relative;
+    background: transparent;
+    padding-bottom: 2rem;
+
+    .breadcrumbs {
+        font-size: .8em;
+        padding: .5rem 0;
+    }
+
+    article {
+        padding: 2rem 1rem 1rem;
+        text-align: left;
+
+        header {
+            margin-bottom: .25rem;
+        }
+
+        h1 {
+            color: $primary;
+            font-weight: $display1-weight;
+        }
+
+        h2 {
+            color: $secondary;
+            font-weight: $display2-weight;
+        }
+
+        h3 {
+            font-weight: $display3-weight;
+        }
+
+        p, ul, ol {
+            line-height: 1.8em;
+        }
+
+    }
+
+    .sidebar {
+        padding-top: 2rem;
+
+        .sidebar-header {
+            color: $secondary;
+            font-size: $h2-font-size;
+            background-color: #efefef;
+            margin: 0;
+            padding: 1rem 1.25rem;
+        }
+
+        .list-group-item {
+            background-color: #efefef;
+            border-bottom: 1px solid #fff !important;
+
+            &.active {
+                color: $primary;
+                font-weight: $font-weight-bold;
+            }
+        }
+
+        .child-page {
+            background-color: #efefef;
+            padding-left: 1.75rem;
+            font-size: .9em;
+            border-bottom: 1px solid #fff !important;
+        }
+    }
+}
+
+// Main Slider
+.slider-container {
+    position: relative;
+    height: 100px;
+    overflow: hidden;
+    z-index: 0;
+
+    @media (min-width: 576px){
+        height: 200px;
+    }
+
+    @media (min-width: 768px){
+        height: 300px;
+    }
+
+    @media (min-width: 992px){
+        height: 420px;
+    }
+
+    @media (min-width: 1200px){
+        height: 540px;
+    }
+}
+
+.button-gallery {
+    .box-button {
+        font-size: 18px;
+
+        a {
+            color: #FFF;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: $font-weight-medium;
+            line-height: 1em;
+            box-shadow: 0 0 10px rgba(0,0,0, .2);
+            font-size: inherit;
+            
+            @media (min-width:768px){
+                height: 184px;
+            }
+
+            span {
+                font-size: inherit;
+            }
+
+            small {
+                font-weight: $font-weight-normal;
+                font-size: 67%;
+            }
+
+            img {
+                width: 68px;
+
+                @media (min-width:768px){
+                    width: 87px;
+                    margin-bottom: 10px;
+                }
+            }
+        }
+
+        &.records-search a {
+            background-color: $purple;
+        }
+
+        &.tax-deeds a {
+            background-color: $primary;
+        }
+
+        &.foreclosures a {
+            background-color: $moss;
+        }
+
+        &.forms a {
+            background-color: $blue;
+        }
+
+        &.e-file a {
+            background-color: $navy;
+        }
+
+        &.pay-online a {
+            background-color: $green;
+        }
+
+        &.marriage a {
+            background-color: $cyan;
+        }
+
+        &.passports a {
+            background-color: $brown;
+        }
+    }
+}
+
+// Footer
+footer {
+    a {
+        color: inherit;
+        text-decoration: underline;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    p {
+        margin: 0 0 .25rem;
+    }
+
+    .footer-content {
+        padding: 1rem;
+    }
+
+    .social-icons {
+        margin: 0 -.25rem;
+        
+        svg {
+
+            path: {
+                fill: transparent !important;
+                stroke: #FFF !important;
+                stroke-width: 2px;
+            }
+        }
+    }
+    .copyright {
+        color: #FFF;
+        font-size: 12px;
+        margin: 0;
+        line-height: 1.5rem;
+    }
+
+    hr {
+        border-color: #555;
+    }
+
+    .siteby {
+        display: inline-block;
+        padding: 0 1rem;
+    }
+}
